@@ -25,7 +25,7 @@ const CourseCard = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/course/${courseCode}`);
+    router.push(`/courses/${courseCode}`);
   };
 
   return (
