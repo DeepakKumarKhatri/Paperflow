@@ -29,7 +29,9 @@ export function SolutionCard({
 
   const constructUrl = (basePath: string, type: string) => {
     const pathSegments = currentPath.split("/").filter(Boolean);
-    return `/${pathSegments[0]}/${pathSegments[1]}/${type}/${documentName}/${documentName.split(" ").join("-")}`;
+    return `/${pathSegments[0]}/${
+      pathSegments[1]
+    }/${type}/${documentName}/${documentName.split(" ").join("-")}`;
   };
 
   const handleClickDocument = () => {

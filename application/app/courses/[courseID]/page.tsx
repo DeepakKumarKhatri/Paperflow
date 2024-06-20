@@ -1,14 +1,19 @@
+"use client";
+
 import { BreadcrumbWithDropdown } from "@/components/BreadCrumb";
 import { DocumentCard } from "@/components/DocumentCard";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 
 const Page = () => {
+  const current_path = usePathname();
+
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-center p-4 bg-gray-100 dark:bg-gray-900">
-        <BreadcrumbWithDropdown />
+      <div className="flex flex-col sm:flex-row justify-between items-center p-4 bg-gray-100 dark:bg-gray-900 gap-6">
         <div className="relative w-full sm:w-auto">
           <input
             type="text"
@@ -17,6 +22,21 @@ const Page = () => {
           />
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300" />
         </div>
+        <Link
+          href={{
+            pathname: "/new_doc",
+            query: {
+              course: current_path.split("/")[2],
+              comingFrom: current_path.split("/")[3],
+              document: current_path.split("/")[4],
+            },
+          }}
+        >
+          <Button>Do you have one?</Button>
+        </Link>
+      </div>
+      <div className="flex flex-col sm:flex-row justify-between items-center p-4 bg-gray-100 dark:bg-gray-900">
+        <BreadcrumbWithDropdown />
       </div>
       <div className="pt-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

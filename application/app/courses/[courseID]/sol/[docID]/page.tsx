@@ -1,10 +1,16 @@
+"use client";
+
 import { BreadcrumbWithDropdown } from "@/components/BreadCrumb";
 import { SolutionCard } from "@/components/SolutionCard";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const Page = () => {
+  const current_path = usePathname();
+
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center p-4 bg-gray-100 dark:bg-gray-900">
@@ -20,9 +26,23 @@ const Page = () => {
       </div>
       <div className="pt-4">
         <div className="mt-2 pt-2 pb-4 border-2 border-gray-300 dark:border-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-800">
-          <h1 className="pl-4 text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-            Available Solutions for ......
-          </h1>
+          <div className="flex justify-between p-4">
+            <h1 className="pl-4 text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+              Available Solutions for ......
+            </h1>
+            <Link
+              href={{
+                pathname: "/new_doc",
+                query: {
+                  course: current_path.split("/")[2],
+                  comingFrom: current_path.split("/")[3],
+                  document: current_path.split("/")[4],
+                },
+              }}
+            >
+              <Button>Do you have one?</Button>
+            </Link>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Array.from({ length: 5 }, (_, index) => (
               <SolutionCard
