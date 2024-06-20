@@ -24,13 +24,6 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
         title: "Contributions",
         path: "/contributions",
         icon: <GrHelpBook size={20} />,
-        submenu: true,
-        subMenuItems: [
-          { title: "Accepted", path: "/contributions/accepted" },
-          { title: "Pending", path: "/contributions/pending" },
-          { title: "Rejected", path: "/contributions/rejected" },
-          { title: "All", path: "/contributions/all" },
-        ],
       },
       {
         title: "Leaderboard",
