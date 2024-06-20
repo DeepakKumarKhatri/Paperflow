@@ -16,6 +16,11 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
         icon: <FaUniversity size={20} />,
       },
       {
+        title: "Bookmarks",
+        path: "/bookmarks",
+        icon: <IoBookmarksSharp size={20} />,
+      },
+      {
         title: "Contributions",
         path: "/contributions",
         icon: <GrHelpBook size={20} />,
@@ -24,12 +29,8 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
           { title: "Accepted", path: "/contributions/accepted" },
           { title: "Pending", path: "/contributions/pending" },
           { title: "Rejected", path: "/contributions/rejected" },
+          { title: "All", path: "/contributions/all" },
         ],
-      },
-      {
-        title: "Bookmarks",
-        path: "/bookmarks",
-        icon: <IoBookmarksSharp size={20} />,
       },
       {
         title: "Leaderboard",

@@ -14,6 +14,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { FaLocationArrow } from "react-icons/fa";
+import { CiBookmarkPlus } from "react-icons/ci";
 
 export function DocumentCard({
   documentName,
@@ -49,6 +50,7 @@ export function DocumentCard({
     <Card className="max-w-[300px] w-full shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer transform hover:-translate-y-1 hover:scale-105 m-4 bg-white dark:bg-gray-800">
       <CardHeader>
         <div
+          title="Open this document"
           className="flex justify-between items-center cursor-pointer bg-slate-200 dark:bg-gray-700 p-4 rounded-lg transition-colors duration-300 hover:bg-slate-300 dark:hover:bg-gray-600"
           onClick={handleClickDocument}
         >
@@ -78,10 +80,15 @@ export function DocumentCard({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex flex-col gap-1">
-        <Button onClick={handleClickSolution} className="text-sm self-start">
+      <CardFooter className="flex gap-1 flex-row justify-between">
+        <Button
+          title="Checkout Available Solutions"
+          onClick={handleClickSolution}
+          className="text-sm self-start"
+        >
           Available Solutions: {solutionsCount}
         </Button>
+        <CiBookmarkPlus title="Add this to bookmark" />
       </CardFooter>
     </Card>
   );
