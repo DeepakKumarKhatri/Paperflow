@@ -29,8 +29,8 @@ export function SolutionCard({
 
   const constructUrl = (basePath: string, type: string) => {
     const pathSegments = currentPath.split("/").filter(Boolean);
-    return `/${pathSegments[0]}/${
-      pathSegments[1]
+    return `/${pathSegments[0]}/${pathSegments[1]}/${
+      pathSegments[2]
     }/${type}/${documentName}/${documentName.split(" ").join("-")}`;
   };
 

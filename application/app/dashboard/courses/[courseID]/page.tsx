@@ -24,7 +24,7 @@ const Page = () => {
         </div>
         <Link
           href={{
-            pathname: "/new_doc",
+            pathname: "/dashboard/new_doc",
             query: {
               course: current_path.split("/")[2],
               comingFrom: current_path.split("/")[3],

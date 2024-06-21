@@ -12,27 +12,27 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
     menuList: [
       {
         title: "Courses",
-        path: "/courses",
+        path: "/dashboard/courses",
         icon: <FaUniversity size={20} />,
       },
       {
         title: "Bookmarks",
-        path: "/bookmarks",
+        path: "/dashboard/bookmarks",
         icon: <IoBookmarksSharp size={20} />,
       },
       {
         title: "Contributions",
-        path: "/contributions",
+        path: "/dashboard/contributions",
         icon: <GrHelpBook size={20} />,
       },
       {
         title: "Leaderboard",
-        path: "/leaderboard",
+        path: "/dashboard/leaderboard",
         icon: <MdLeaderboard size={20} />,
       },
       {
         title: "Inbox",
-        path: "/inbox",
+        path: "/dashboard/inbox",
         icon: <FaDiscourse size={20} />,
       },
     ],
@@ -42,17 +42,17 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
     menuList: [
       {
         title: "Billings",
-        path: "/billings",
+        path: "/dashboard/billings",
         icon: <MdPayments size={20} />,
       },
       {
         title: "Support",
-        path: "/support",
+        path: "/dashboard/support",
         icon: <MdSupportAgent size={20} />,
       },
       {
         title: "Help",
-        path: "/help",
+        path: "/dashboard/help",
         icon: <BsQuestionCircle size={20} />,
       },
     ],
