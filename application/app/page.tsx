@@ -55,7 +55,7 @@ export default function Page() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="deepak@gmail.com"
                   required
                   className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />

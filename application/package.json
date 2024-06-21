@@ -28,6 +28,7 @@
     "dotenv": "^16.4.5",
     "formidable": "^3.5.1",
     "formik": "^2.4.6",
+    "framer-motion": "^11.2.11",
     "lucide-react": "^0.308.0",
     "mongoose": "^8.3.5",
     "multiparty": "^4.2.3",
