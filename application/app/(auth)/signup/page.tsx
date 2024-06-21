@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/card";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
-import "../globals.css";
+import "../../globals.css";
 
 export const iframeHeight = "600px";
 
