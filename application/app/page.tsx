@@ -35,10 +35,10 @@ export default function Page() {
           />
         </div>
       </div>
-      <div className="flex flex-1 items-center justify-center py-12 lg:py-0 relative">
-        <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md transform -translate-y-12">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-purple-300 rounded-lg shadow-md transform translate-y-12"></div>
-          <div className="relative z-10 space-y-6">
+      <div className="flex flex-1 items-center justify-center py-12 lg:py-0">
+        <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-purple-300 rounded-lg shadow-md transform"></div>
+          <div className="relative z-10 ">
             <div className="space-y-2 text-center">
               <h1 className="text-3xl font-bold text-gray-800 leading-tight mt-10">
                 Welcome to Paperflow

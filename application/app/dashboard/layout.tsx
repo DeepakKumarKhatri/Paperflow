@@ -4,25 +4,12 @@ import { SideBar } from "@/components/sidebar";
 import Header from "@/components/header";
 import PageWrapper from "@/components/pagewrapper";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Metadata } from "next";
 
 const karla = Karla({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-karla",
 });
-export const metadata: Metadata = {
-  title: "{User} Dashboard",
-  description: "BizzHub - Bussiness Owner Dashboard",
-  icons: {
-    icon: [
-      {
-        url: "/images/logo/logoTitle.png",
-        href: "/images/logo/logoTitle.png",
-      },
-    ],
-  },
-};
 
 export default function RootLayout({
   children,
