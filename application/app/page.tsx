@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FcGoogle } from "react-icons/fc";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import "./globals.css";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
+import { useRouter } from "next/navigation";
 
 export const iframeHeight = "800px";
 
@@ -17,9 +20,26 @@ export const containerClassName =
 
 export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleSignIn = async () => {
+    try {
+      const response = await signInWithEmailAndPassword(email, password);
+      sessionStorage.setItem("user", true);
+      console.log({ response });
+      if (response) {
+        router.push("/dashboard/courses");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -58,6 +78,8 @@ export default function Page() {
                   placeholder="deepak@gmail.com"
                   required
                   className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="space-y-2">
@@ -78,6 +100,8 @@ export default function Page() {
                     type={showPassword ? "text" : "password"}
                     required
                     className="border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-10"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     type="button"
@@ -95,6 +119,7 @@ export default function Page() {
               <Button
                 type="submit"
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                onClick={handleSignIn}
               >
                 Login
               </Button>

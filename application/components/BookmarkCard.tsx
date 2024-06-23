@@ -65,6 +65,11 @@ export function BookmarkCard({
         <div className="grid w-full items-center gap-4">
           <div className="flex flex-col space-y-1.5">
             <Label className="text-gray-700 dark:text-gray-400">
+              Course: MAT-101
+            </Label>
+          </div>
+          <div className="flex flex-col space-y-1.5">
+            <Label className="text-gray-700 dark:text-gray-400">
               Semester: {semester}
             </Label>
           </div>

@@ -14,8 +14,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-
 import "../../globals.css";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 
 export const iframeHeight = "600px";
 
@@ -24,9 +25,26 @@ export const containerClassName =
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lasttName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleCreateAccount = async () => {
+    try {
+      const response = await createUserWithEmailAndPassword(email, password);
+      sessionStorage.setItem("user", true);
+      console.log({ response });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -49,9 +67,11 @@ export default function LoginForm() {
                 </Label>
                 <Input
                   id="first-name"
-                  placeholder="Max"
+                  placeholder="Deepak"
                   required
                   className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
@@ -60,9 +80,11 @@ export default function LoginForm() {
                 </Label>
                 <Input
                   id="last-name"
-                  placeholder="Robinson"
+                  placeholder="Kumar"
                   required
                   className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  value={lasttName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
@@ -73,9 +95,11 @@ export default function LoginForm() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="deepak@example.com"
                 required
                 className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
@@ -88,6 +112,8 @@ export default function LoginForm() {
                   type={showPassword ? "text" : "password"}
                   required
                   className="border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-10"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -105,6 +131,7 @@ export default function LoginForm() {
             <Button
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+              onClick={handleCreateAccount}
             >
               Create an account
             </Button>

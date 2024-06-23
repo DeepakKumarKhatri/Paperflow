@@ -1,8 +1,24 @@
+"use client";
+
 import CourseCard from "@/components/CourseCard";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Page = () => {
+  const [user] = useAuthState(auth);
+  const router = useRouter();
+
+  useEffect(() => {
+    const userSession = sessionStorage.getItem("user");
+    if (!userSession && !user) {
+      redirect("/");
+    }
+  }, [user, router]);
+
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center p-4 bg-gray-100 dark:bg-gray-900">

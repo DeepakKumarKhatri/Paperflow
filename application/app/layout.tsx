@@ -19,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body>
-        <header className="p-1 pb-2">
+        <header className="p-1 pb-2" suppressHydrationWarning={true}>
           <Navbar />
         </header>
         <main>{children}</main>
