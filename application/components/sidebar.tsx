@@ -13,7 +13,7 @@ export const SideBar = () => {
   const asideStyle = classNames(
     "sidebar overflow-y-auto overflow-x-auto fixed bg-sidebar h-full shadow-sm shadow-slate-500/40 transition duration-300 ease-in-out z-[99999]",
     {
-      ["w-[19rem]"]: !toggleCollapse,
+      ["w-[18rem]"]: !toggleCollapse,
       ["sm:w-[5.4rem] sm:left-0 left-[-100%]"]: toggleCollapse,
     }
   );

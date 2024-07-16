@@ -45,15 +45,11 @@ export function UserNav() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup onClick={() => router.push("/profile")}>
+        <DropdownMenuGroup onClick={() => router.push("/dashboard/profile")}>
           <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Button variant="outline" onClick={handleLogout}>
-            Log out
-          </Button>
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

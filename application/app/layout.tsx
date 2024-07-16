@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning={true} style={{ zoom: '90%' }}>
       <body>
         <header className="p-1 pb-2" suppressHydrationWarning={true}>
           <Navbar />

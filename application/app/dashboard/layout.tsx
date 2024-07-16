@@ -16,10 +16,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={karla.className + " h-screen overflow-hidden"}>
+    <html lang="en" suppressHydrationWarning={true} style={{ zoom: "90%" }}>
+      <body
+        className={karla.className + " h-screen overflow-hidden"}
+        suppressHydrationWarning={true}
+      >
         <ThemeProvider
           themes={["dark", "custom", "light"]}
           attribute="class"
@@ -29,7 +31,9 @@ export default function RootLayout({
           <>
             <SideBar />
             <div className="flex flex-col h-full w-full">
-              <Header />
+              <header suppressHydrationWarning={true}>
+                <Header />
+              </header>
               <PageWrapper children={children} />
             </div>
           </>

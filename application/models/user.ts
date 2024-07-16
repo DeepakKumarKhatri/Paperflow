@@ -1,105 +1,23 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose from "mongoose";
 
-interface ProfileImage {
-  imageUrl: string;
-  public_id: string;
-}
-
-interface TodoCategory {
-  title: string;
-  tasks: string[];
-}
-
-export interface UserModel extends Document {
-  fullName: string;
-  email: string;
-  gender: string;
-  phoneNumber: string;
-  age: number;
-  city: string;
-  address: string;
-  country: string;
-  subscriptions: string[];
-  profileImage: ProfileImage;
-  todoList: TodoCategory[];
-}
-
-const ProfileImageSchema: Schema<ProfileImage> = new mongoose.Schema(
+const subscriptionSchema = new mongoose.Schema(
   {
-    imageUrl: {
+    subType: {
       type: String,
-      required: true,
+      default: "freemium",
     },
-    public_id: {
+    expiresIn: {
       type: String,
-      required: true,
+      default: "",
     },
-  },
-  { _id: false }
-);
-
-const TodoCategorySchema: Schema<TodoCategory> = new mongoose.Schema({
-  title: {
-    type: String,
-    // required: true,
-  },
-  tasks: {
-    type: [String],
-    default: [],
-  },
-});
-
-const UserSchema: Schema<UserModel> = new mongoose.Schema(
-  {
-    fullName: {
-      type: String,
-      required: [true, "Please add a full name"],
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: [true, "Please add an email"],
-      unique: true,
-    },
-    gender: {
-      type: String,
-      required: [true, "Please add a gender"],
-    },
-    phoneNumber: {
-      type: String,
-      required: [true, "Please add a phone number"],
-    },
-    age: {
+    amountPaid: {
       type: Number,
-      required: [true, "Please add an age"],
+      default: 0,
     },
-    city: {
+    status: {
       type: String,
-      required: [true, "Please add a city"],
-    },
-    address: {
-      type: String,
-      required: [true, "Please add an address"],
-    },
-    country: {
-      type: String,
-      required: [true, "Please add a country"],
-    },
-    subscriptions: {
-      type: [String],
-      default: [],
-    },
-    // profileImage: {
-    //   type: ProfileImageSchema,
-    //   // required: true,
-    // },
-    todoList: {
-      type: [TodoCategorySchema],
-      default: [
-        { title: "TO DO", tasks: [] },
-        { title: "IN PROGRESS", tasks: [] },
-        { title: "COMPLETED", tasks: [] },
-      ],
+      enum: ["active", "dead"],
+      default: "active",
     },
   },
   {
@@ -107,7 +25,108 @@ const UserSchema: Schema<UserModel> = new mongoose.Schema(
   }
 );
 
-const User: Model<UserModel> =
-  mongoose.models.User || mongoose.model<UserModel>("User", UserSchema);
+const systemAccessSchema = new mongoose.Schema(
+  {
+    userRole: {
+      type: String,
+      default: "",
+    },
+    isBlocked: {
+      type: Boolean,
+      default: false,
+    },
+    profileCompleted: {
+      type: Boolean,
+      default: false,
+    },
+    isLoggedIn: {
+      type: Boolean,
+      default: false,
+    },
+    subscriptions: [subscriptionSchema],
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const userSchema = new mongoose.Schema(
+  {
+    fullName: {
+      type: String,
+      required: [true, "Please add a full name"],
+    },
+    email: {
+      type: String,
+      required: [true, "Please add an email"],
+      unique: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: [false, "Please add a phone number"],
+      default: "",
+    },
+    dob: {
+      type: Number,
+      required: [false, "Please add your dob"],
+      default: "",
+    },
+    profileImage: {
+      type: String,
+      default: "",
+    },
+    systemAccess: systemAccessSchema,
+    courses: [
+      {
+        course: {
+          type: mongoose.Types.ObjectId,
+          ref: "Course",
+        },
+      },
+    ],
+    bookmarks: [
+      {
+        bookmark: {
+          type: mongoose.Types.ObjectId,
+          ref: "Resource",
+        },
+      },
+    ],
+    contributions: [
+      {
+        contribution: {
+          type: mongoose.Types.ObjectId,
+          ref: "Resource",
+        },
+        status: {
+          type: String,
+          enum: ["accepted", "rejected", "pending"],
+          default: "pending",
+        },
+      },
+    ],
+    chats: [
+      {
+        chat: {
+          type: mongoose.Types.ObjectId,
+          ref: "Chat",
+        },
+      },
+    ],
+    submissions: [
+      {
+        submission: {
+          type: mongoose.Types.ObjectId,
+          ref: "Submission",
+        },
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const User = mongoose.model("User", userSchema);
 
 export default User;
