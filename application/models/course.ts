@@ -20,12 +20,12 @@ const courseSchema = new mongoose.Schema(
           type: mongoose.Types.ObjectId,
           ref: "Resource",
         },
-        contentSize: {
-          type: Number,
-          default: 0,
-        },
       },
     ],
+    contentSize: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
