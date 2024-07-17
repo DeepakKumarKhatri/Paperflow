@@ -35,15 +35,39 @@ const Page = () => {
         </div>
       </div>
       <div className="p-4 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 10 }, (_, index) => (
+        {/* {Array.from({ length: 10 }, (_, index) => ( */}
           <CourseCard
-            key={index}
+            // key={index}
             courseName="TICS-II"
             courseCode="CSC-901"
             creditHours="3"
             contentSize="134"
           />
-        ))}
+          <CourseCard
+            courseName="Multivariable Calculas"
+            courseCode="MAT-602"
+            creditHours="3"
+            contentSize="134"
+          />
+          <CourseCard
+            courseName="Theory of Automata"
+            courseCode="THI-102"
+            creditHours="3"
+            contentSize="134"
+          />
+          <CourseCard
+            courseName="Human Computer Interaction"
+            courseCode="HCI-401"
+            creditHours="3"
+            contentSize="134"
+          />
+          <CourseCard
+            courseName="Introduction to Computers"
+            courseCode="ICT-802"
+            creditHours="5"
+            contentSize="134"
+          />
+        {/* ))} */}
       </div>
     </>
   );

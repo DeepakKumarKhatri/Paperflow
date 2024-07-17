@@ -44,7 +44,7 @@ export const SideBar = () => {
             { hidden: toggleCollapse }
           )}
         >
-          Hey, User
+          Hey, Deepak
         </h3>
       </div>
       <nav className="flex flex-col gap-2 transition duration-300 ease-in-out">
